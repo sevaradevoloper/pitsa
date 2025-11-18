@@ -281,9 +281,17 @@ body {
     }
 }
 .price{
-    font-weight: 700;
-    font-size: 16px;
-    
+    font-size: 25px;
+    font-weight: bold;
+}
+h3{
+  font-size: 25px;
+    font-weight: bold;  
+}
+.price-tag{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ------------------------------------- */
@@ -389,7 +397,7 @@ body {
 /* ------------------------------------- */
 /* 4. RESPONSIVE DIZAYN (Kichik ekranlar) */
 /* ------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .show h1 {
         font-size: 15vw;
     }
@@ -428,4 +436,50 @@ body {
         padding  : 15px;
         max-width: 90%;
     }
+    /* PIZZA ANIMATSIYASI (Kichiklashib o'tish) */
+#pizza-image.pizza-in-list {
+    position: fixed;
+    /* Scroll bilan birga harakatlanishi uchun Fixed */
+
+    /* Boshlang'ich holat (Hero qismidagi joylashuvni saqlaydi) */
+    /* Pitsa o'zining mutlaq markazida bo'lishi kerak. */
+    top : 50%;
+    left: 50%;
+
+    /* Hero qismidagi asl razmerni saqlaymiz. */
+    width    : 300px;
+    /* Taxminiy asl kattalik */
+    transform: translate(-50%, 50%) rotate(0deg);
+    /* Pitsa board ostida joylashadi */
+
+    z-index: 30;
+
+    /* Pitsa Silliq o'tishi uchun tranzitsiya (tezroq) */
+    transition: top 0.8s ease-in-out, left 0.8s ease-in-out, width 0.8s ease-in-out, transform 0.8s ease-in-out;
+
+    /* Doimiy aylanish animatsiyasi (bu transition dan mustaqil ishlashi kerak) */
+    animation: spin 5s linear infinite;
+}
+
+.is-scrolled #pizza-image.pizza-in-list {
+    /* Listning tepa chap burchagiga sekin borish */
+    top  : 300px;
+    left : 25%;
+    width: 150px;
+    /* Kichrayish */
+
+    /* Transformni shunchaki joylashuvni to'g'irlash uchun ishlatamiz */
+    transform: translate(0, 0) rotate(0deg);
+}
+/* Scroll tugaganda/boshlanganda, pitsa listning burchagida kichik holatda qoladi */
+.is-scrolled #pizza-image.pizza-in-list {
+    /* Listning tepa chap burchagiga sekin borish */
+    top  : 220px;
+    left : 5%;
+    width: 80px;
+    /* Kichrayish */
+
+    /* Transformni shunchaki joylashuvni to'g'irlash uchun ishlatamiz */
+    transform: translate(0, 0) rotate(0deg);
+}
 }
